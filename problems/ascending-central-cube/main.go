@@ -39,6 +39,33 @@ func arr(max int) {
 		myVec_2d[origin+i][origin] = val + i
 		// bo-left
 		myVec_2d[origin+i][origin-i] = val + i
+
+		// Top Perspective
+		// 	myVec_2d[0][i] = max
+		if i > 0 {
+			for j := 1; j <= max-i-1; j++ {
+				// bot-right wing
+				myVec_2d[origin+i][origin+i+j] = val + j + i
+				// bot-left wing
+				myVec_2d[origin+i][origin-i-j] = val + j + i
+
+				//bot-left triangle
+				myVec_2d[origin+i+j][origin-i] = val + j + i
+				//bot-right triangle
+				myVec_2d[origin+i+j][origin+i] = val + j + i
+
+				// top-right wing
+				myVec_2d[origin-i][origin+i+j] = val + j + i
+				// top-left wing
+				myVec_2d[origin-i][origin-i-j] = val + j + i
+
+				//bot-left triangle
+				myVec_2d[origin-i-j][origin-i] = val + j + i
+				//bot-right triangle
+				myVec_2d[origin-i-j][origin+i] = val + j + i
+
+			}
+		}
 	}
 
 	for p := 0; p < lim; p++ {
@@ -48,5 +75,5 @@ func arr(max int) {
 }
 
 func main() {
-	arr(6)
+	arr(7)
 }
